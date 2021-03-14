@@ -79,7 +79,7 @@
                 <Button
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="Zadanie 2" />
+                    android:text="Zadanie 5" />
 
                 <Button
                     android:layout_width="200dp"

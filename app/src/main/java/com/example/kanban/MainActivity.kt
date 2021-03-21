@@ -2,10 +2,10 @@ package com.example.kanban
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.Button
-import android.widget.Toast
 
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val poleTekstowe1: EditText;
         val arrayAdapter: ArrayAdapter<*>
         val zadania1: MutableList<String> = ArrayList()
 
@@ -21,10 +22,11 @@ class MainActivity : AppCompatActivity() {
 
         arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, zadania1)
         mListView1.adapter = arrayAdapter
+        poleTekstowe1 = findViewById(R.id.editText1)
 
         val btnToDo = findViewById(R.id.btDoZrobienia) as Button
         btnToDo.setOnClickListener {
-            zadania1.add("Zadanie")
+            zadania1.add(poleTekstowe1.text.toString())
             mListView1.adapter = arrayAdapter
         }
 

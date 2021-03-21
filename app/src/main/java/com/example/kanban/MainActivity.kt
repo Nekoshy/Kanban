@@ -30,6 +30,38 @@ class MainActivity : AppCompatActivity() {
             mListView1.adapter = arrayAdapter
         }
 
+        val poleTekstowe2: EditText;
+        val arrayAdapter2: ArrayAdapter<*>
+        val zadania2: MutableList<String> = ArrayList()
+
+        val mListView2 = findViewById<ListView>(R.id.listview2)
+
+        arrayAdapter2 = ArrayAdapter(this, android.R.layout.simple_list_item_1, zadania2)
+        mListView2.adapter = arrayAdapter2
+        poleTekstowe2 = findViewById(R.id.editText2)
+
+        val btnDo = findViewById(R.id.btwTrakcie) as Button
+        btnDo.setOnClickListener {
+            zadania2.add(poleTekstowe2.text.toString())
+            mListView2.adapter = arrayAdapter2
+        }
+
+        val poleTekstowe3: EditText;
+        val arrayAdapter3: ArrayAdapter<*>
+        val zadania3: MutableList<String> = ArrayList()
+
+        val mListView3 = findViewById<ListView>(R.id.listview3)
+
+        arrayAdapter3 = ArrayAdapter(this, android.R.layout.simple_list_item_1, zadania3)
+        mListView3.adapter = arrayAdapter3
+        poleTekstowe3 = findViewById(R.id.editText3)
+
+        val btnDone = findViewById(R.id.btZrobione) as Button
+        btnDone.setOnClickListener {
+            zadania3.add(poleTekstowe3.text.toString())
+            mListView3.adapter = arrayAdapter3
+        }
+
 
     }
 }

@@ -1,10 +1,8 @@
 package com.example.kanban
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ListView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -59,6 +57,31 @@ class MainActivity : AppCompatActivity() {
         val btnDone = findViewById(R.id.btZrobione) as Button
         btnDone.setOnClickListener {
             zadania3.add(poleTekstowe3.text.toString())
+            mListView3.adapter = arrayAdapter3
+        }
+
+        mListView1.setOnItemClickListener {parent, view, position, id ->
+
+            Toast.makeText(this@MainActivity, "Przeniesiono: '"+zadania1[position]+"' do listy W trakcie.",Toast.LENGTH_SHORT).show()
+            zadania2.add(zadania1[position])
+            zadania1.removeAt(position)
+            mListView1.adapter = arrayAdapter
+            mListView2.adapter = arrayAdapter2
+        }
+
+        mListView2.setOnItemClickListener {parent, view, position, id ->
+
+            Toast.makeText(this@MainActivity, "Przeniesiono: '"+zadania2[position]+"' do listy Zrobione.",Toast.LENGTH_SHORT).show()
+            zadania3.add(zadania2[position])
+            zadania2.removeAt(position)
+            mListView2.adapter = arrayAdapter2
+            mListView3.adapter = arrayAdapter3
+        }
+
+        mListView3.setOnItemClickListener {parent, view, position, id ->
+
+            Toast.makeText(this@MainActivity, "Usunieto: '"+zadania3[position]+"' z tablicy.",Toast.LENGTH_SHORT).show()
+            zadania3.removeAt(position)
             mListView3.adapter = arrayAdapter3
         }
 

@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity() {
         val tabwTrakcie = findViewById(R.id.wTrakcie) as Button
         val tabZrobione = findViewById(R.id.zrobione) as Button
 
+        val del = findViewById(R.id.btDelete) as Button
+
         val poleTekstowe1: EditText;
         val arrayAdapter: ArrayAdapter<*>
         val zadania1: MutableList<String> = ArrayList()
@@ -81,6 +83,12 @@ class MainActivity : AppCompatActivity() {
                 mListView1.adapter = arrayAdapter
                 mListView3.adapter = arrayAdapter3
             }
+
+            del.setOnClickListener {
+                Toast.makeText(this@MainActivity, "Przeniesiono: '"+zadania1[position]+"' do kosza.",Toast.LENGTH_SHORT).show()
+                zadania1.removeAt(position)
+                mListView1.adapter = arrayAdapter
+            }
         }
 
         mListView2.setOnItemClickListener {parent, view, position, id ->
@@ -100,6 +108,12 @@ class MainActivity : AppCompatActivity() {
                 mListView2.adapter = arrayAdapter2
                 mListView3.adapter = arrayAdapter3
             }
+
+            del.setOnClickListener {
+                Toast.makeText(this@MainActivity, "Przeniesiono: '"+zadania2[position]+"' do kosza.",Toast.LENGTH_SHORT).show()
+                zadania2.removeAt(position)
+                mListView2.adapter = arrayAdapter2
+            }
         }
 
         mListView3.setOnItemClickListener {parent, view, position, id ->
@@ -117,6 +131,12 @@ class MainActivity : AppCompatActivity() {
                 zadania2.add(zadania3[position])
                 zadania3.removeAt(position)
                 mListView2.adapter = arrayAdapter2
+                mListView3.adapter = arrayAdapter3
+            }
+
+            del.setOnClickListener {
+                Toast.makeText(this@MainActivity, "Przeniesiono: '"+zadania3[position]+"' do kosza.",Toast.LENGTH_SHORT).show()
+                zadania3.removeAt(position)
                 mListView3.adapter = arrayAdapter3
             }
         }

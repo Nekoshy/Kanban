@@ -113,6 +113,13 @@
                     android:layout_gravity="center"
                     android:text="+" />
 
+                <Button
+                    android:id="@+id/btDelete"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="DELETE" />
+
             </LinearLayout>
         </LinearLayout>
     </HorizontalScrollView>

@@ -12,6 +12,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val tabDoZrobienia = findViewById(R.id.doZrobienia) as Button
+        val tabwTrakcie = findViewById(R.id.wTrakcie) as Button
+        val tabZrobione = findViewById(R.id.zrobione) as Button
+
         val poleTekstowe1: EditText;
         val arrayAdapter: ArrayAdapter<*>
         val zadania1: MutableList<String> = ArrayList()
@@ -62,27 +66,59 @@ class MainActivity : AppCompatActivity() {
 
         mListView1.setOnItemClickListener {parent, view, position, id ->
 
-            Toast.makeText(this@MainActivity, "Przeniesiono: '"+zadania1[position]+"' do listy W trakcie.",Toast.LENGTH_SHORT).show()
-            zadania2.add(zadania1[position])
-            zadania1.removeAt(position)
-            mListView1.adapter = arrayAdapter
-            mListView2.adapter = arrayAdapter2
+            tabwTrakcie.setOnClickListener {
+                Toast.makeText(this@MainActivity, "Przeniesiono: '"+zadania1[position]+"' do listy W trakcie.",Toast.LENGTH_SHORT).show()
+                zadania2.add(zadania1[position])
+                zadania1.removeAt(position)
+                mListView1.adapter = arrayAdapter
+                mListView2.adapter = arrayAdapter2
+            }
+
+            tabZrobione.setOnClickListener {
+                Toast.makeText(this@MainActivity, "Przeniesiono: '"+zadania1[position]+"' do listy Zrobione.",Toast.LENGTH_SHORT).show()
+                zadania3.add(zadania1[position])
+                zadania1.removeAt(position)
+                mListView1.adapter = arrayAdapter
+                mListView3.adapter = arrayAdapter3
+            }
         }
 
         mListView2.setOnItemClickListener {parent, view, position, id ->
 
-            Toast.makeText(this@MainActivity, "Przeniesiono: '"+zadania2[position]+"' do listy Zrobione.",Toast.LENGTH_SHORT).show()
-            zadania3.add(zadania2[position])
-            zadania2.removeAt(position)
-            mListView2.adapter = arrayAdapter2
-            mListView3.adapter = arrayAdapter3
+            tabDoZrobienia.setOnClickListener {
+                Toast.makeText(this@MainActivity, "Przeniesiono: '"+zadania2[position]+"' do listy Do zrobienia.",Toast.LENGTH_SHORT).show()
+                zadania1.add(zadania2[position])
+                zadania2.removeAt(position)
+                mListView1.adapter = arrayAdapter
+                mListView2.adapter = arrayAdapter2
+            }
+
+            tabZrobione.setOnClickListener {
+                Toast.makeText(this@MainActivity, "Przeniesiono: '"+zadania2[position]+"' do listy Zrobione.",Toast.LENGTH_SHORT).show()
+                zadania3.add(zadania2[position])
+                zadania2.removeAt(position)
+                mListView2.adapter = arrayAdapter2
+                mListView3.adapter = arrayAdapter3
+            }
         }
 
         mListView3.setOnItemClickListener {parent, view, position, id ->
 
-            Toast.makeText(this@MainActivity, "Usunieto: '"+zadania3[position]+"' z tablicy.",Toast.LENGTH_SHORT).show()
-            zadania3.removeAt(position)
-            mListView3.adapter = arrayAdapter3
+            tabDoZrobienia.setOnClickListener {
+                Toast.makeText(this@MainActivity, "Przeniesiono: '"+zadania2[position]+"' do listy Do zrobienia.",Toast.LENGTH_SHORT).show()
+                zadania1.add(zadania3[position])
+                zadania3.removeAt(position)
+                mListView1.adapter = arrayAdapter
+                mListView3.adapter = arrayAdapter3
+            }
+
+            tabwTrakcie.setOnClickListener {
+                Toast.makeText(this@MainActivity, "Przeniesiono: '"+zadania3[position]+"' do listy W Trakcie.",Toast.LENGTH_SHORT).show()
+                zadania2.add(zadania3[position])
+                zadania3.removeAt(position)
+                mListView2.adapter = arrayAdapter2
+                mListView3.adapter = arrayAdapter3
+            }
         }
 
 
